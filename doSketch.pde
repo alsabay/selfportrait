@@ -1,7 +1,7 @@
 /*function: creates curve sketch based on list of vertices passed in as parameter
 Parameters: vertList = List of vertices for the sketch, f = true/false indicates fill or nofill,
 fil = fill color, pencil = pencil color
-By: Al Sabay
+By: Al Sabay, Manny Farrugia
 Date: 1/20/2018
 */
 void doSketch(FloatList vertList, boolean f, color fl, color pencil){

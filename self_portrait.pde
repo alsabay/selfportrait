@@ -5,17 +5,17 @@ https://www.mobilefish.com/services/record_mouse_coordinates/record_mouse_coordi
 My headshot image was uploaded, then coordinates were recorded by clicking on outlines of the image.
 The list of vertices are grouped for the portrait components in csv format 
 (eyes, face, nose etc), then curves are drawn using the Processing Instruction Set.
-by: Al Sabay
+by: Al Sabay, Manny Farrugia
 date: Jan 19 2018
 */
 
-//Global variables
-//Pencil Color
-color pencil = color(70,71,100);
-color fil = color(255, 255, 255);
+//Global variables for Al's portrait
+//Color Pallette
+color pencil = color(70,71,100); // gray
+color fil = color(255, 255, 255); // white
 color wht = color(255, 255, 255);
 color blk = color(0,0,0);
-color Paper = color(245, 244, 199);
+color Paper = color(245, 244, 199); //cream
 // sketch canvas location offsets
 float xOffset = 0; // transform for moving the image, positive moves to the right, negative to left
 float yOffset = 0; // transform for moving the image, positive moves down, negative moves up

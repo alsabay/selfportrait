@@ -1,6 +1,6 @@
 /* function: returns a list of x,y coordinate pairs from portaitData
 Parameters: name = Column name of vertex, tbl = Table name
-By: Al Sabay
+By: Al Sabay, Manny Farrugia
 Date: 1/20/2018
 */
 FloatList getVertices(String name, Table tbl){
