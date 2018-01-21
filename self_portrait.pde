@@ -19,8 +19,11 @@ color Paper = color(245, 244, 199); //cream
 // sketch canvas location offsets
 float xOffset = 0; // transform for moving the image, positive moves to the right, negative to left
 float yOffset = 0; // transform for moving the image, positive moves down, negative moves up
+float xOffsetm = 500; // transform for moving the image, positive moves to the right, negative to left
+float yOffsetm = 100; // transform for moving the image, positive moves down, negative moves up
 Table portraitData; // Table used as buffer for vertices from csv file
-// Globals for sketch components
+Table portraitManny; // Table for manny's vertices
+// Globals for sketch components - Al
 FloatList face = new FloatList();
 FloatList chin = new FloatList();
 FloatList lEyebrow = new FloatList();
@@ -39,9 +42,25 @@ FloatList neckLine = new FloatList();
 FloatList rJaw = new FloatList();
 FloatList lJaw = new FloatList();
 
+// Globals for sketch components - Manny
+FloatList facem = new FloatList();
+FloatList chinm = new FloatList();
+FloatList lEyebrowm = new FloatList();
+FloatList lEyem = new FloatList();
+FloatList lIrism = new FloatList();
+FloatList rEyebrowm = new FloatList();
+FloatList rEyem = new FloatList();
+FloatList rIrism = new FloatList();
+FloatList nosem = new FloatList();
+FloatList mouthm = new FloatList();
+FloatList lipsm = new FloatList();
+FloatList lEarm = new FloatList();
+FloatList rEarm = new FloatList();
+FloatList neckLinem = new FloatList();
+
 void setup(){
   //create the canvas
-  size(600, 674);
+  size(1000, 700);
   background(Paper);
   stroke(pencil);
   noFill();
@@ -66,26 +85,60 @@ void setup(){
   neckLine = getVertices("neckLine", portraitData);
   rJaw = getVertices("rightJaw", portraitData);
   lJaw = getVertices("leftJaw", portraitData);
+  
+  //load csv file containing vertex data for sketch
+  portraitManny = loadTable("Manny.csv", "header");
+  //load portrait components data into data structures/FloatList
+  facem = getVertices("faceOutline", portraitManny);
+  chinm = getVertices("chin", portraitManny);
+  lEyebrowm = getVertices("leftEyebrow", portraitManny);
+  lEyem = getVertices("leftEye", portraitManny);
+  lIrism = getVertices("leftIris", portraitManny);
+  rEyebrowm = getVertices("rightEyebrow", portraitManny);
+  rEyem = getVertices("rightEye", portraitManny);
+  rIrism = getVertices("rightIris", portraitManny);
+  nosem = getVertices("Nose", portraitManny);
+  mouthm = getVertices("Mouth", portraitManny);
+  lipsm = getVertices("lips", portraitManny);
+  lEarm = getVertices("leftEar", portraitManny);
+  rEarm = getVertices("rightEar", portraitManny);
+  neckLinem = getVertices("neckline", portraitManny);
 }
 
 void draw(){
  // call doSketch function to sketch the facial components based on passed in list of vertices
   noLoop(); // single sweep sketch only, disable image updates
-  doSketch(face, false, fil, pencil);
-  doSketch(chin, false, fil, pencil);
-  doSketch(hair, false, blk, pencil);
-  doSketch(lEyebrow, false, fil, pencil);
-  doSketch(lEye, false, fil, pencil);
-  doSketch(lIris, false, blk, pencil);
-  doSketch(rEyebrow, false, fil, pencil);
-  doSketch(rEye, false, fil, pencil);
-  doSketch(rIris, false, blk, pencil);
-  doSketch(nose, false, fil, pencil);
-  doSketch(mouth, false, fil, pencil);
-  doSketch(lips, false, wht, pencil);
-  doSketch(lEar, false, fil, pencil);
-  doSketch(rEar, false, fil, pencil);
-  doSketch(neckLine, false, fil, pencil);
-  doSketch(rJaw, false, fil, pencil);
-  doSketch(lJaw, false, fil, pencil);
+  doSketch(face, false, true, fil, pencil);
+  doSketch(chin, false, true, fil, pencil);
+  doSketch(hair, false, true, blk, pencil);
+  doSketch(lEyebrow, false, true, fil, pencil);
+  doSketch(lEye, false, true, fil, pencil);
+  doSketch(lIris, false, true, blk, pencil);
+  doSketch(rEyebrow, false, true, fil, pencil);
+  doSketch(rEye, false, true, fil, pencil);
+  doSketch(rIris, false, true, blk, pencil);
+  doSketch(nose, false, true, fil, pencil);
+  doSketch(mouth, false, true, fil, pencil);
+  doSketch(lips, false, true, wht, pencil);
+  doSketch(lEar, false, true, fil, pencil);
+  doSketch(rEar, false, true, fil, pencil);
+  doSketch(neckLine, false, true, fil, pencil);
+  doSketch(rJaw, false, true, fil, pencil);
+  doSketch(lJaw, false, true, fil, pencil);
+  
+  // call doSketch functioin for Manny's data
+  doSketch(facem, false, false, fil, pencil);
+  doSketch(chinm, false, false, fil, pencil);
+  doSketch(lEyebrowm, false, false, fil, pencil);
+  doSketch(lEyem, false, false,fil,  pencil);
+  doSketch(lIrism, false,  false,blk, pencil);
+  doSketch(rEyebrowm, false, false, fil,  pencil);
+  doSketch(rEyem, false,  false, fil, pencil);
+  doSketch(rIrism, false, false, blk,  pencil);
+  doSketch(nosem, false, false, fil, pencil);
+  doSketch(mouthm, false, false, fil, pencil);
+  doSketch(lipsm, false, false, wht, pencil);
+  doSketch(lEarm, false, false,fil,  pencil);
+  doSketch(rEarm, false, false,fil,  pencil);
+  doSketch(neckLinem, false, false, fil, pencil);
 }

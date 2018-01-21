@@ -1,14 +1,18 @@
 /*function: creates curve sketch based on list of vertices passed in as parameter
 Parameters: vertList = List of vertices for the sketch, f = true/false indicates fill or nofill,
-fil = fill color, pencil = pencil color
+fil = fill color, pencil = pencil color, a = true (al) false (manny)
 By: Al Sabay, Manny Farrugia
 Date: 1/20/2018
 */
-void doSketch(FloatList vertList, boolean f, color fl, color pencil){
+void doSketch(FloatList vertList, boolean f, boolean a, color fl, color pencil){
   noFill();
   if(f){
    fill(fl); 
   }
+  if (!a){
+    xOffset = xOffsetm;
+    yOffset = yOffsetm;
+  }  
   stroke(pencil);
   float[] vtc = vertList.array();
   // draw curves based on passed in vertices parameter
@@ -24,7 +28,7 @@ void doSketch(FloatList vertList, boolean f, color fl, color pencil){
      float y3 = vtc[i+5] + yOffset;
      float x4 = vtc[i+6] + xOffset;;
      float y4 = vtc[i+7] + yOffset;
-     float x5 = vtc[i+8] + xOffset;;
+     float x5 = vtc[i+8] + xOffset;
      float y5 = vtc[i+9] + yOffset;
      float x6 = vtc[i+10] + xOffset;;
      float y6 = vtc[i+11] + yOffset;
