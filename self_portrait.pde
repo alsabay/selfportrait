@@ -10,8 +10,15 @@ date: Jan 19 2018
 */
 
 //Global variables
-float xOffset = -100; // transform for moving the image, positive moves to the right, negative to left
-float yOffset = -100; // transform for moving the image, positive moves down, negative moves up
+//Pencil Color
+color pencil = color(70,71,100);
+color fil = color(255, 255, 255);
+color wht = color(255, 255, 255);
+color blk = color(0,0,0);
+color Paper = color(245, 244, 199);
+// sketch canvas location offsets
+float xOffset = 0; // transform for moving the image, positive moves to the right, negative to left
+float yOffset = 0; // transform for moving the image, positive moves down, negative moves up
 Table portraitData; // Table used as buffer for vertices from csv file
 // Globals for sketch components
 FloatList face = new FloatList();
@@ -35,11 +42,11 @@ FloatList lJaw = new FloatList();
 void setup(){
   //create the canvas
   size(600, 674);
-  background(255);
-  stroke(0);
+  background(Paper);
+  stroke(pencil);
   noFill();
   
-  //load csv file
+  //load csv file containing vertex data for sketch
   portraitData = loadTable("alportraitData3.csv", "header");
   //load portrait components data into data structures/FloatList
   face = getVertices("faceOutline", portraitData);
@@ -64,21 +71,21 @@ void setup(){
 void draw(){
  // call doSketch function to sketch the facial components based on passed in list of vertices
   noLoop(); // single sweep sketch only, disable image updates
-  doSketch(face);
-  doSketch(chin);
-  doSketch(hair);
-  doSketch(lEyebrow);
-  doSketch(lEye);
-  doSketch(lIris);
-  doSketch(rEyebrow);
-  doSketch(rEye);
-  doSketch(rIris);
-  doSketch(nose);
-  doSketch(mouth);
-  doSketch(lips);
-  doSketch(lEar);
-  doSketch(rEar);
-  doSketch(neckLine);
-  doSketch(rJaw);
-  doSketch(lJaw);
+  doSketch(face, false, fil, pencil);
+  doSketch(chin, false, fil, pencil);
+  doSketch(hair, false, blk, pencil);
+  doSketch(lEyebrow, false, fil, pencil);
+  doSketch(lEye, false, fil, pencil);
+  doSketch(lIris, false, blk, pencil);
+  doSketch(rEyebrow, false, fil, pencil);
+  doSketch(rEye, false, fil, pencil);
+  doSketch(rIris, false, blk, pencil);
+  doSketch(nose, false, fil, pencil);
+  doSketch(mouth, false, fil, pencil);
+  doSketch(lips, false, wht, pencil);
+  doSketch(lEar, false, fil, pencil);
+  doSketch(rEar, false, fil, pencil);
+  doSketch(neckLine, false, fil, pencil);
+  doSketch(rJaw, false, fil, pencil);
+  doSketch(lJaw, false, fil, pencil);
 }

@@ -1,4 +1,6 @@
-// function: returns a list of x,y coordinate pairs from portaitData
+/* function: returns a list of x,y coordinate pairs from portaitData
+Parameters: name = Column name of vertex, tbl = Table name
+*/
 FloatList getVertices(String name, Table tbl){
  FloatList v = new FloatList();
  //iterate through named column and build list of sequential x,y coordinates

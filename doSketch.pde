@@ -1,8 +1,13 @@
-// function: creates curve sketch based on list of vertices passed in as parameter
-
-void doSketch(FloatList vertList){
+/*function: creates curve sketch based on list of vertices passed in as parameter
+Parameters: vertList = List of vertices for the sketch, f = true/false indicates fill or nofill,
+fil = fill color, pencil = pencil color
+*/
+void doSketch(FloatList vertList, boolean f, color fl, color pencil){
   noFill();
-  stroke(0);
+  if(f){
+   fill(fl); 
+  }
+  stroke(pencil);
   float[] vtc = vertList.array();
   // draw curves based on passed in vertices parameter
   for (int i = 0 ; i < vtc.length; i=i+2){
