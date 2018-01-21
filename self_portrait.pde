@@ -3,7 +3,7 @@ Self Portrait using Processing Language. This program reads a json array file of
 The vertices were recorded using this coordinate tool found at 
 https://www.mobilefish.com/services/record_mouse_coordinates/record_mouse_coordinates.php.
 My headshot image was uploaded, then coordinates were recorded by clicking on outlines of the image.
-The list of vertices are grouped for the portrait components in json format 
+The list of vertices are grouped for the portrait components in csv format 
 (eyes, face, nose etc), then curves are drawn using the Processing Instruction Set.
 by: Al Sabay
 date: Jan 19 2018
