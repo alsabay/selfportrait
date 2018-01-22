@@ -18,9 +18,9 @@ color blk = color(0,0,0);
 color Paper = color(245, 244, 199); //cream
 // sketch canvas location offsets
 float xOffset = 0; // transform for moving the image, positive moves to the right, negative to left
-float yOffset = 0; // transform for moving the image, positive moves down, negative moves up
+float yOffset = 400; // transform for moving the image, positive moves down, negative moves up
 float xOffsetm = 500; // transform for moving the image, positive moves to the right, negative to left
-float yOffsetm = 100; // transform for moving the image, positive moves down, negative moves up
+float yOffsetm = 400; // transform for moving the image, positive moves down, negative moves up
 Table portraitData; // Table used as buffer for vertices from csv file
 Table portraitManny; // Table for manny's vertices
 // Globals for sketch components - Al
@@ -58,9 +58,13 @@ FloatList lEarm = new FloatList();
 FloatList rEarm = new FloatList();
 FloatList neckLinem = new FloatList();
 
+// Globals for Manny
+float HeadHeight = 425; //y variable, delcration for the hight of the head in pixels
+float HeadWidth = HeadHeight * 0.564705882352941; //x variable, declaration for the width of the head, fixed to 240 pixels 
+
 void setup(){
   //create the canvas
-  size(1000, 700);
+  size(1000, 1000);
   background(Paper);
   stroke(pencil);
   noFill();
@@ -141,4 +145,66 @@ void draw(){
   doSketch(lEarm, false, false,fil,  pencil);
   doSketch(rEarm, false, false,fil,  pencil);
   doSketch(neckLinem, false, false, fil, pencil);
+  
+  // Manny's sketch
+  bezier(HeadWidth - 30, HeadHeight - 21, HeadWidth + 23, HeadHeight+25, HeadWidth + 104, HeadHeight + 18, HeadWidth + 140, HeadHeight -16); // create bezier function
+// bezier(x1,y1,x2,y2, x3,y3, x4,y4)
+
+// Draw left cheek
+
+bezier(HeadWidth- 30,HeadHeight-24,HeadWidth-50,HeadHeight-47,HeadWidth-70,HeadHeight-79,HeadWidth-63,HeadHeight-110);
+
+// Draw right cheek
+
+bezier(HeadWidth+168,HeadHeight-95,HeadWidth+154,HeadHeight-38,HeadWidth+142,HeadHeight-23,HeadWidth+133,HeadHeight-10);
+
+//draw nose
+
+bezier(HeadWidth + 82,HeadHeight-118,HeadWidth+87,HeadHeight-93,HeadWidth+18,HeadHeight-96,HeadWidth+21,HeadHeight-117);
+
+// Draw left eye brow
+
+bezier(HeadWidth-48,HeadHeight-205,HeadWidth-33,HeadHeight-207,HeadWidth-5,HeadHeight-203,HeadWidth+22,HeadHeight-195);
+
+// Draw right eye brow
+
+bezier(HeadWidth+79,HeadHeight-191,HeadWidth+98,HeadHeight-199,HeadWidth+126,HeadHeight-196,HeadWidth+150,HeadHeight-195);
+
+//draw left eye
+
+ellipse(HeadWidth-11,HeadHeight-174, 20, 20); // Draw epllise
+
+//draw right eye
+ellipse(HeadWidth+113,HeadHeight-168, 20, 20);
+
+// Draw dimple
+
+bezier(HeadWidth + 30, HeadHeight - 23, HeadWidth + 48, HeadHeight -24, HeadWidth + 56, HeadHeight -24, HeadWidth + 71, HeadHeight -19);
+
+//Draw mouth
+
+bezier(HeadWidth+8,HeadHeight-60,HeadWidth+45,HeadHeight-52,HeadWidth+78,HeadHeight-51,HeadWidth+96,HeadHeight-55);
+
+// Draw right ear
+
+beginShape();
+vertex(HeadWidth+170, HeadHeight-189); // set vertext control points
+bezierVertex(HeadWidth+194, HeadHeight-188, HeadWidth+208, HeadHeight-169, HeadWidth+169, HeadHeight-98); // create bezierVertext which depends on vertext points declared above
+bezierVertex(HeadWidth+169, HeadHeight-98, HeadWidth+160, HeadHeight-154, HeadWidth+170, HeadHeight-189);
+endShape();
+
+// Draw left ear
+
+beginShape();
+vertex(HeadWidth-62, HeadHeight-205);
+bezierVertex(HeadWidth-84, HeadHeight-205, HeadWidth-95, HeadHeight-185, HeadWidth-63, HeadHeight-114);
+bezierVertex(HeadWidth-63,HeadHeight-114,HeadWidth-55,HeadHeight-161,HeadWidth-63,HeadHeight-205);
+endShape();
+
+//Draw top half of head and hair
+beginShape();
+vertex(HeadWidth+59,HeadHeight-399);
+bezierVertex(HeadWidth+123, HeadHeight-387, HeadWidth+178, HeadHeight-338, HeadWidth+191, HeadHeight-264);
+bezierVertex(HeadWidth-2, HeadHeight-391, HeadWidth-69, HeadHeight-323, HeadWidth-83, HeadHeight-208);
+endShape();
 }
